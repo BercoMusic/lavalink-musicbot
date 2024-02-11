@@ -6,11 +6,11 @@ const ayarlar = require("./ayarlar.json")
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] }); 
 client.commands = new Collection();
 
-const commandFiles = fs.readdirSync('./komutlar').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-	const command = require(`./komutlar/${file}`);
+	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
 }
 
